@@ -12,36 +12,42 @@ i = 1;
 new_x(1) = origin_x;
 new_y(1) = origin_y;
 while(target~=0)
-u = (((target_x)-x)^2)+(((target_y)-(y+1))^2);
-d = (((target_x)-x)^2)+(((target_y)-(y-1))^2);
-l = (((target_x)-(x-1))^2)+(((target_y)-y)^2);
-r = (((target_x)-(x+1))^2)+(((target_y)-y)^2);
-k = (((target_x)-(x+1))^2)+(((target_y)-(y+1))^2);
+u_loc = y+8;
+d_loc = y-1;
+l_loc = x-1;
+r_loc = x+1;
+diax_loc = x+1;
+diay_loc = y+1;
+u = (((target_x)-x)^2)+(((target_y)-(u_loc))^2);
+d = (((target_x)-x)^2)+(((target_y)-(d_loc))^2);
+l = (((target_x)-(l_loc))^2)+(((target_y)-y)^2);
+r = (((target_x)-(r_loc))^2)+(((target_y)-y)^2);
+k = (((target_x)-(diax_loc))^2)+(((target_y)-(diay_loc))^2);
 node = [u d l r k];
 dummy = min(node);
 i = i+1;
 if dummy == u 
 
-    y = y+0.1;
+    y = u_loc;
 
 elseif dummy == d
 
-        y = y-0.1;
+        y = d_loc;
 
         
 elseif dummy == l
 
-            x = x-0.1;
+            x = l_loc;
 
             
 elseif dummy == r
 
-      x = x+0.1;
+      x = r_loc;
 
 elseif dummy == k
     
-    x = x+0.1;
-    y = y+0.1;
+    x = diax_loc;
+    y = diay_loc;
 
 else
     disp('invalid')
